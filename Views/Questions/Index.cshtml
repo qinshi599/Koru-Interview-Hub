@@ -1,0 +1,48 @@
+@model IEnumerable<JokesWebApp.Models.Question>
+
+@{
+    ViewData["Title"] = "Interview Questions";
+}
+
+<h1>Interview Questions</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add New Question</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>No interview questions have been added yet.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Difficulty</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var question in Model)
+            {
+                <tr>
+                    <td>@question.Title</td>
+                    <td>@question.Category</td>
+                    <td>@question.Difficulty</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@question.Id">
+                            View Details
+                        </a>
+                          |
+                         <a asp-action="Edit" asp-route-id="@question.Id">
+                             Edit
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

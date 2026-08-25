@@ -1,0 +1,39 @@
+@model JokesWebApp.Models.Question
+
+@{
+    ViewData["Title"] = "Question Details";
+}
+
+<h1>Question Details</h1>
+
+<div>
+    <h4>@Model.Title</h4>
+    <hr />
+
+    <dl class="row">
+        <dt class="col-sm-3">
+            Category
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Category
+        </dd>
+
+        <dt class="col-sm-3">
+            Difficulty
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Difficulty
+        </dd>
+
+        <dt class="col-sm-3">
+            Question
+        </dt>
+        <dd class="col-sm-9">
+            @Model.Content
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to Questions</a>
+</div>
