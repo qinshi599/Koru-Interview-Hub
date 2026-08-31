@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using JokesWebApp.Models;
+using InterviewApp.Models;
 
-namespace JokesWebApp.Controllers;
+namespace InterviewApp.Controllers;
 
 public class HomeController : Controller
 {

@@ -11,33 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterviewApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260824232011_AddQuestions")]
-    partial class AddQuestions
+    [Migration("20260831083544_RemoveJokes")]
+    partial class RemoveJokes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.11");
-
-            modelBuilder.Entity("InterviewApp.Models.Joke", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("JokeAnswer")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("JokeQuestion")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Joke");
-                });
 
             modelBuilder.Entity("InterviewApp.Models.Question", b =>
                 {

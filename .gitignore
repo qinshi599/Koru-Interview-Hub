@@ -1,0 +1,15 @@
+## .NET build artifacts
+bin/
+obj/
+
+## SQLite database (local dev data; recreated from Migrations)
+*.db
+*.db-shm
+*.db-wal
+
+## User-specific files
+.vs/
+*.user
+
+## OS files
+.DS_Store

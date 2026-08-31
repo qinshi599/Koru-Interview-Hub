@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace JokesWebApp.Data.Migrations
+namespace InterviewApp.Data.Migrations
 {
     /// <inheritdoc />
     public partial class AddQuestions : Migration

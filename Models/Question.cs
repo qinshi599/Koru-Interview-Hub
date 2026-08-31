@@ -1,4 +1,4 @@
-namespace JokesWebApp.Models;
+namespace InterviewApp.Models;
 
 public class Question
 {

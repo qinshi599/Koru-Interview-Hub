@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace JokesWebApp.Data.Migrations
+namespace InterviewApp.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
