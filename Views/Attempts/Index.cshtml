@@ -1,0 +1,44 @@
+@model IEnumerable<InterviewApp.Models.Attempt>
+
+@{
+    ViewData["Title"] = "My Practice Attempts";
+}
+
+<h1>My Practice Attempts</h1>
+
+<p class="page-intro">Review your previous answers and keep improving your interview preparation.</p>
+
+@if (!Model.Any())
+{
+    <p>You have not submitted any answers yet.</p>
+}
+else
+{
+    <div class="table-panel table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Your Answer</th>
+                <th>Submitted At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var attempt in Model)
+            {
+                <tr>
+                    <td>
+                        @attempt.Question?.Title
+                    </td>
+                    <td>
+                        @attempt.AnswerText
+                    </td>
+                    <td>
+                        @attempt.AttemptedAt.ToLocalTime()
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+}

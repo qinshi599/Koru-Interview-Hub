@@ -6,6 +6,8 @@
 
 <h1>Interview Questions</h1>
 
+<p class="page-intro">Practice real interview questions, track your answers, and build confidence.</p>
+
 <p>
     <a asp-action="Create" class="btn btn-primary">Add New Question</a>
 </p>
@@ -16,6 +18,7 @@
 }
 else
 {
+    <div class="table-panel table-responsive">
     <table class="table">
         <thead>
             <tr>
@@ -30,19 +33,24 @@ else
             {
                 <tr>
                     <td>@question.Title</td>
-                    <td>@question.Category</td>
+                    <td>@question.Category?.Name</td>
                     <td>@question.Difficulty</td>
                     <td>
-                        <a asp-action="Details" asp-route-id="@question.Id">
+                        <a class="action-link" asp-action="Details" asp-route-id="@question.Id">
                             View Details
                         </a>
                           |
-                         <a asp-action="Edit" asp-route-id="@question.Id">
+                         <a class="action-link" asp-action="Edit" asp-route-id="@question.Id">
                              Edit
+                        </a>
+                            |
+                        <a class="action-link action-link-danger" asp-action="Delete" asp-route-id="@question.Id">
+                             Delete
                         </a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+    </div>
 }

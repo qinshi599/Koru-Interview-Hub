@@ -8,7 +8,10 @@ public class Question
 
     public string Content { get; set; } = string.Empty;
 
-    public string Category { get; set; } = string.Empty;
-
     public string Difficulty { get; set; } = string.Empty;
+
+    //foreign key to Category
+    public int CategoryId { get; set; }
+    public Category? Category { get; set; }
+     public ICollection<Attempt> Attempts { get; set; } = new List<Attempt>();
 }
