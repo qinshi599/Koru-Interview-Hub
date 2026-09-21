@@ -12,6 +12,11 @@
     <a asp-action="Create" class="btn btn-primary">Add New Question</a>
 </p>
 
+<form asp-action="Index" method="get" class="mb-3">
+    <label for="categoryId">Category:</label>
+    @Html.DropDownList("categoryId", (SelectList)ViewBag.CategoryId, "All categories", new { onchange = "this.form.submit()" })
+</form>
+
 @if (!Model.Any())
 {
     <p>No interview questions have been added yet.</p>

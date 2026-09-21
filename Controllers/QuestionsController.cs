@@ -21,12 +21,20 @@ public class QuestionsController : Controller
 }
 
     // GET: /Questions
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? categoryId)
     {
-        var questions = await _context.Questions
+        var questionsQuery = _context.Questions
             .Include(q => q.Category)
-            .ToListAsync();
+            .AsQueryable();
 
+        if (categoryId.HasValue)
+        {
+            questionsQuery = questionsQuery.Where(q => q.CategoryId == categoryId);
+        }
+
+        ViewBag.CategoryId = new SelectList(_context.Categories, "Id", "Name", categoryId);
+
+        var questions = await questionsQuery.ToListAsync();
         return View(questions);
     }
 
