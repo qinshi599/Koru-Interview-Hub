@@ -11,4 +11,10 @@ public class Attempt
 
     public string AnswerText { get; set; } = string.Empty;
     public DateTime AttemptedAt { get; set; } = DateTime.UtcNow;
+
+    // AI-generated composite score (0-100), null until scored.
+    public int? Score { get; set; }
+
+    // AI-generated structured feedback text, null until scored.
+    public string? Feedback { get; set; }
 }

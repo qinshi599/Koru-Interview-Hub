@@ -8,30 +8,15 @@
 
 <div class="panel">
     <h4>@Model.Title</h4>
+
+    <div class="meta-row">
+        <span class="badge-pill">@Model.Category?.Name</span>
+        <span class="badge-pill badge-pill-outline">@Model.Difficulty</span>
+    </div>
+
     <hr />
 
-    <dl class="row">
-        <dt class="col-sm-3">
-            Category
-        </dt>
-        <dd class="col-sm-9 question-content">
-            @Model.Category?.Name
-        </dd>
-
-        <dt class="col-sm-3">
-            Difficulty
-        </dt>
-        <dd class="col-sm-9">
-            @Model.Difficulty
-        </dd>
-
-        <dt class="col-sm-3">
-            Question
-        </dt>
-        <dd class="col-sm-9">
-            @Model.Content
-        </dd>
-    </dl>
+    <p class="question-content">@Model.Content</p>
 </div>
 <hr />
 
@@ -65,9 +50,21 @@
         <div class="attempt-card mb-3">
             <div class="card-body">
                 <p class="card-text">@attempt.AnswerText</p>
+                @if (attempt.Score.HasValue)
+                {
+                    <div class="meta-row">
+                        <span class="badge-pill">AI Score: @attempt.Score / 100</span>
+                    </div>
+                    <p class="card-text text-muted">@attempt.Feedback</p>
+                }
                 <small class="text-muted">
                     Submitted at: @attempt.AttemptedAt.ToLocalTime()
                 </small>
+                <form asp-controller="Attempts" asp-action="Delete" method="post"
+                      onsubmit="return confirm('Delete this answer?');" class="mt-2">
+                    <input type="hidden" name="id" value="@attempt.Id" />
+                    <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                </form>
             </div>
         </div>
     }

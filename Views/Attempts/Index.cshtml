@@ -20,7 +20,10 @@ else
             <tr>
                 <th>Question</th>
                 <th>Your Answer</th>
+                <th>AI Score</th>
+                <th>AI Feedback</th>
                 <th>Submitted At</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -30,11 +33,24 @@ else
                     <td>
                         @attempt.Question?.Title
                     </td>
-                    <td>
+                    <td class="text-muted">
                         @attempt.AnswerText
                     </td>
+                    <td class="text-muted">
+                        @(attempt.Score.HasValue ? $"{attempt.Score}/100" : "-")
+                    </td>
+                    <td class="text-muted">
+                        @attempt.Feedback
+                    </td>
+                    <td class="text-muted">
+                        @attempt.AttemptedAt.ToLocalTime().ToString("d MMM yyyy")
+                    </td>
                     <td>
-                        @attempt.AttemptedAt.ToLocalTime()
+                        <form asp-controller="Attempts" asp-action="Delete" method="post"
+                              onsubmit="return confirm('Delete this answer?');">
+                            <input type="hidden" name="id" value="@attempt.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
                     </td>
                 </tr>
             }
