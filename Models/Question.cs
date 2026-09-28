@@ -14,4 +14,5 @@ public class Question
     public int CategoryId { get; set; }
     public Category? Category { get; set; }
      public ICollection<Attempt> Attempts { get; set; } = new List<Attempt>();
+    public ICollection<FollowUpQuestion> FollowUpQuestions { get; set; } = new List<FollowUpQuestion>();
 }

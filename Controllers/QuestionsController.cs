@@ -50,6 +50,7 @@ public class QuestionsController : Controller
     var question = await _context.Questions
     .Include(q => q.Category)
     .Include(q => q.Attempts)
+    .Include(q => q.FollowUpQuestions)
     .FirstOrDefaultAsync(q => q.Id == id);
 
     if (question == null)

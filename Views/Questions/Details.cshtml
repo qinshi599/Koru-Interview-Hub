@@ -17,6 +17,18 @@
     <hr />
 
     <p class="question-content">@Model.Content</p>
+
+    @if (Model.FollowUpQuestions.Any())
+    {
+        <hr />
+        <p class="mb-1"><strong>The interviewer might also ask:</strong></p>
+        <ul>
+            @foreach (var followUp in Model.FollowUpQuestions)
+            {
+                <li>@followUp.Text</li>
+            }
+        </ul>
+    }
 </div>
 <hr />
 

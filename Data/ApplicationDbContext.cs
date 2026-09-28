@@ -9,4 +9,5 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 	public DbSet<Question> Questions { get; set; } = default!;
 	public DbSet<Category> Categories { get; set; } = default!;
 	public DbSet<Attempt> Attempts { get; set; } = default!;
+	public DbSet<FollowUpQuestion> FollowUpQuestions { get; set; } = default!;
 }
