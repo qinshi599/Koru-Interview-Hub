@@ -44,7 +44,11 @@ public class AttemptsController : Controller
 public async Task<IActionResult> Create(int questionId, string answerText)
 {
     var userId = _userManager.GetUserId(User);
-
+        if (string.IsNullOrWhiteSpace(answerText))
+    {
+        return RedirectToAction("Details", "Questions", new { id = questionId });
+    }
+    
     var attempt = new Attempt
     {
         QuestionId = questionId,
